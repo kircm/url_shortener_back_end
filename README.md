@@ -171,11 +171,17 @@ This allows the system to keep track of "deletion" activity. It also leaves the 
 specify expiration date on the creation of a shortened URL in future enhancements. 
 
 ### Extension model class
-The app controller interacts with the
+The app's controller interacts with the
 [Shortener::ShortenedUrl](https://github.com/jpmcgrath/shortener/blob/develop/app/models/shortener/shortened_url.rb)
 model. It also interacts with functionality that we provide in our class called
 [ShortenedUrlExt](https://github.com/kircm/url_shortener_back_end/blob/master/app/models/shortened_url_ext.rb). 
 That class contains purely-functional methods to abstract the controller from operations that are model-related and that 
 we coded "on top" of the `Shortener::ShortenedUrl` model. We didn't extend the `Shortener::ShortenedUrl` class, as 
 we didn't want to impact the Rails `ActiveRecord` functionality. Instead we just provide those "functions" in 
-its own separate namespace. 
+its own separate namespace.
+
+### Validation of input parameters
+The app's controller doesn't validate de format of the parameters sent by the client (`url`, `custom_slug`).
+URL's passed in are expected to be valid. Custom slugs are expected to follow the format that's configured in the
+underlying `shortener` gem's [configuration](https://github.com/jpmcgrath/shortener#configuration-).
+  
