@@ -6,7 +6,7 @@
 The setups steps expect the following software installed in the system
 
 - Git
-- Ruby 2.7.0
+- Ruby 3.0.1
 - [Bundler](https://bundler.io/)
 
 ##### 1. Check out the repository
